@@ -12,7 +12,7 @@ const Header = () => {
           <span className='logo-text'>Mini Project - Planet Soft</span>
         </Link>
         <div className='options'>
-          <Link className='option' to='/'>
+          <Link className='option' to='/zadatak1'>
             Zadatak 1
           </Link>
           <Link className='option' to='/zadatak2'>

@@ -12,7 +12,7 @@ function App() {
     <div className='App'>
       <Header />
       <Switch>
-        <Route exact path='/' component={Zadatak1} />
+        <Route exact path='/zadatak1' component={Zadatak1} />
         <Route path='/zadatak2' component={Zadatak2} />
         <Route path='/zadatak3' component={Zadatak3} />
       </Switch>

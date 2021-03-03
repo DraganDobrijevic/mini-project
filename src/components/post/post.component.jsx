@@ -3,8 +3,17 @@ import { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
 import './post.styles.css';
 
-const Post = ({ id, author, title, blogPost, contactEmail, deletePost }) => {
-  const [updatePost, setUpdatePost] = useState({
+const Post = ({
+  id,
+  author,
+  title,
+  blogPost,
+  contactEmail,
+  deletePost,
+  updatePost,
+  posts,
+}) => {
+  const [updatePostData, setUpdatePostData] = useState({
     author: '',
     title: '',
     blogPost: '',
@@ -16,7 +25,7 @@ const Post = ({ id, author, title, blogPost, contactEmail, deletePost }) => {
     title: titleUpdate,
     blogPost: blogPostUpdate,
     contactEmail: contactEmailUpdate,
-  } = updatePost;
+  } = updatePostData;
 
   const [show, setShow] = useState(false);
 
@@ -26,9 +35,25 @@ const Post = ({ id, author, title, blogPost, contactEmail, deletePost }) => {
     deletePost(id);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = (e) => {
+    e.preventDefault();
     console.log('update');
     console.log(id);
+    console.log(updatePostData);
+
+    // console.log(posts);
+    // deletePost(id);
+
+    updatePost(id, updatePostData);
+
+    setUpdatePostData({
+      author: '',
+      title: '',
+      blogPost: '',
+      contactEmail: '',
+    });
+
+    setShow(false);
   };
 
   const showUpdateForm = () => {
@@ -43,24 +68,31 @@ const Post = ({ id, author, title, blogPost, contactEmail, deletePost }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setUpdatePost({ ...updatePost, [name]: value });
+    setUpdatePostData({ ...updatePostData, [name]: value });
   };
 
   return (
     <div className='post'>
-      <h3>{title}</h3>
-      <h4>{blogPost}</h4>
-      <h5>{author}</h5>
-      <h5>{contactEmail}</h5>
-      <Button variant='outline-danger' size='sm' onClick={handleDeletePost}>
-        Delete Post
-      </Button>
-      <Button variant='outline-info' size='sm' onClick={showUpdateForm}>
-        Update Post
-      </Button>
+      <h3 className='post-title'>{title}</h3>
+
+      <p className='post-text'>{blogPost}</p>
+      <div className='post-info'>
+        <span>
+          Posted by {author}, {contactEmail}
+        </span>
+        <hr />
+      </div>
+      <div className='post-footer'>
+        <Button variant='outline-danger' size='sm' onClick={handleDeletePost}>
+          Delete Post
+        </Button>
+        <Button variant='outline-info' size='sm' onClick={showUpdateForm}>
+          Update Post
+        </Button>
+      </div>
       {show && (
         <div className='blog-form-update'>
-          <h4 className='title'>Update Post</h4>
+          <h5 className='title'>Update Post</h5>
           <form className='create-blog-form' onSubmit={handleUpdate}>
             <FormInput
               type='text'

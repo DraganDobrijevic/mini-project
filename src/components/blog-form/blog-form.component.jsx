@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import './blog-form.styles.css';
 
 const BlogForm = ({ addNewPost }) => {
-  console.log(addNewPost);
   const [postInfo, setPostInfo] = useState({
     author: '',
     title: '',

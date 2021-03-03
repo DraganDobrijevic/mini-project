@@ -1,33 +1,12 @@
 import { useState, useEffect } from 'react';
 import BlogForm from '../../components/blog-form/blog-form.component';
 import AllPosts from '../../components/all-posts/all-posts.component';
+import './zadatak1.styles.css';
 
 const LOCAL_STORAGE_KEY = 'react-mini-project.posts';
 
 const Zadatak1 = () => {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      author: 'Dragan',
-      title: 'Title1',
-      blogPost: 'tekst Draganov q askdka skf a asf alsfkja fla kf a',
-      contactEmail: 'd@d.com',
-    },
-    {
-      id: 2,
-      author: 'Petar',
-      title: 'Title2',
-      blogPost: 'tekst Petrov q askdka skf a asf alsfkja fla kf a',
-      contactEmail: 'p@d.com',
-    },
-    {
-      id: 3,
-      author: 'Jakov',
-      title: 'Title3',
-      blogPost: 'tekst Jakovljev q askdka skf a asf alsfkja fla kf a',
-      contactEmail: 'j@d.com',
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -41,7 +20,7 @@ const Zadatak1 = () => {
 
   const addNewPost = (newPost) => {
     const post = {
-      id: 10,
+      id: Date.now(),
       ...newPost,
     };
     setPosts([post, ...posts]);
@@ -52,11 +31,43 @@ const Zadatak1 = () => {
     setPosts(newPosts);
   };
 
+  const updatePost = (id, newData) => {
+    console.log('updateeeeeeeeeeeee');
+    console.log(id);
+    // const object = posts.find((x) => x.id === id);
+    const object = posts.filter((post) => post.id === id);
+    console.log(object);
+    const index = posts.indexOf(object[0]);
+    console.log(index);
+    console.log(newData);
+
+    const newUpdate = {
+      id,
+      ...newData,
+    };
+    console.log(newUpdate);
+
+    const updatedObject = [
+      ...posts.slice(0, index),
+      newUpdate,
+      ...posts.slice(index + 1),
+    ];
+
+    console.log(updatedObject);
+    setPosts(updatedObject);
+  };
+
   return (
     <div className='task1'>
       <h2>Mini Blog</h2>
-      <BlogForm addNewPost={addNewPost} />
-      <AllPosts posts={posts} deletePost={deletePost} />
+      <div className='blog'>
+        <BlogForm addNewPost={addNewPost} />
+        <AllPosts
+          posts={posts}
+          deletePost={deletePost}
+          updatePost={updatePost}
+        />
+      </div>
     </div>
   );
 };

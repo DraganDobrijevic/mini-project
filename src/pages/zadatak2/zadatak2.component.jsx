@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './zadatak2.styles.css';
 import data from './data.json';
 import { useCustomHook } from './useCustomHook';
-import FormInput from '../../components/form-input/form-input.component';
 
 const Zadatak2 = () => {
   const { sortBy, search, searchData, sortByData } = useCustomHook(data);
@@ -26,57 +25,106 @@ const Zadatak2 = () => {
   return (
     <div className='custom-hook'>
       <h2>Custom Hook</h2>
-      <FormInput
-        type='text'
-        name='search'
-        value={searchInput}
-        label='Search the data by name'
-        onChange={handleChange}
-        required
-      />
-      <div className='search-result'>
-        <h5>Search Result:</h5>
-        {searchData.map(
-          ({ id, first_name, last_name, email, gender, ip_address }) => (
-            <div key={id}>
-              <h6>ID: {id}</h6>
-              <h6>First Name: {first_name}</h6>
-              <h6>Last Name: {last_name}</h6>
-              <h6>Email: {email}</h6>
-              <h6>Gender: {gender}</h6>
-              <h6>IP Address: {ip_address}</h6>
-            </div>
-          )
-        )}
+      <div className='search'>
+        <div className='search-box'>
+          <h5>Search result:</h5>
+          <div>
+            <label>Search the data by name:</label>
+            <input
+              className='search-input'
+              type='text'
+              name='search'
+              value={searchInput}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className='search-result'>
+          <table className='table'>
+            <thead className='thead-light'>
+              <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>ID</th>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Email</th>
+                <th scope='col'>Gender</th>
+                <th scope='col'>IP Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {searchData.map(
+                (
+                  { id, first_name, last_name, email, gender, ip_address },
+                  index
+                ) => (
+                  <tr key={id}>
+                    <th scope='row'>{index + 1}.</th>
+                    <td>{id}</td>
+                    <td>{first_name}</td>
+                    <td>{last_name}</td>
+                    <td>{email}</td>
+                    <td>{gender}</td>
+                    <td> {ip_address}</td>
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <label>Sort the data by:</label>
-      <select
-        className=''
-        name='data'
-        id='data'
-        onChange={(e) => sortBy(e.target.value)}
-      >
-        <option value='first_name'>First Name</option>
-        <option value='last_name'>Last Name</option>
-        <option value='id'>ID</option>
-      </select>
+      <div className='sort'>
+        <div className='select-sort'>
+          <h5>Sorted data:</h5>
+          <div>
+            <label>Sort the data by:</label>
+            <select
+              className=''
+              name='data'
+              id='data'
+              onChange={(e) => sortBy(e.target.value)}
+            >
+              <option value='first_name'>First Name</option>
+              <option value='last_name'>Last Name</option>
+              <option value='id'>ID</option>
+            </select>
+          </div>
+        </div>
 
-      <div className='sorted-result'>
-        <h5>Sorted data:</h5>
-        {sortByData.map(
-          ({ id, first_name, last_name, email, gender, ip_address }) => (
-            <div key={id}>
-              <span>ID: {id}, </span>
-              <span>First Name: {first_name}, </span>
-              <span>Last Name: {last_name}, </span>
-              <span>Email: {email}, </span>
-              <span>Gender: {gender}, </span>
-              <span>IP Address: {ip_address} </span>
-              <hr />
-            </div>
-          )
-        )}
+        <div className='sorted-result'>
+          <table className='table'>
+            <thead className='thead-light'>
+              <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>ID</th>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Email</th>
+                <th scope='col'>Gender</th>
+                <th scope='col'>IP Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortByData.map(
+                (
+                  { id, first_name, last_name, email, gender, ip_address },
+                  index
+                ) => (
+                  <tr key={id}>
+                    <th scope='row'>{index + 1}.</th>
+                    <td>{id}</td>
+                    <td>{first_name}</td>
+                    <td>{last_name}</td>
+                    <td>{email}</td>
+                    <td>{gender}</td>
+                    <td> {ip_address}</td>
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

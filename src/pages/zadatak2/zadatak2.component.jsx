@@ -1,19 +1,42 @@
+import { useEffect, useState } from 'react';
 import './zadatak2.styles.css';
 import data from './data.json';
 import { useCustomHook } from './useCustomHook';
-import './zadatak2.styles.css';
+import FormInput from '../../components/form-input/form-input.component';
 
 const Zadatak2 = () => {
-  const { sortBy, search } = useCustomHook(data);
-  console.log(search);
-  console.log(sortBy);
+  const { sortBy, search, searchData, sortByData } = useCustomHook(data);
+  const [searchInput, setSearchInput] = useState('');
+
+  useEffect(() => {
+    search('Ambur');
+    sortBy('first_name');
+  }, []);
+  // sortBy('first_name');
+
+  // console.log(searchData);
+  // console.log(sortByData);
+  // console.log(data);
+  const handleChange = (e) => {
+    let { value } = e.target;
+    setSearchInput(value);
+    search(value);
+  };
 
   return (
     <div className='custom-hook'>
       <h2>Custom Hook</h2>
+      <FormInput
+        type='text'
+        name='search'
+        value={searchInput}
+        label='Search the data by name'
+        onChange={handleChange}
+        required
+      />
       <div className='search-result'>
         <h5>Search Result:</h5>
-        {search.map(
+        {searchData.map(
           ({ id, first_name, last_name, email, gender, ip_address }) => (
             <div key={id}>
               <h6>ID: {id}</h6>
@@ -26,9 +49,22 @@ const Zadatak2 = () => {
           )
         )}
       </div>
+
+      <label>Sort the data by:</label>
+      <select
+        className=''
+        name='data'
+        id='data'
+        onChange={(e) => sortBy(e.target.value)}
+      >
+        <option value='first_name'>First Name</option>
+        <option value='last_name'>Last Name</option>
+        <option value='id'>ID</option>
+      </select>
+
       <div className='sorted-result'>
-        <h5>Sort By:</h5>
-        {sortBy.map(
+        <h5>Sorted data:</h5>
+        {sortByData.map(
           ({ id, first_name, last_name, email, gender, ip_address }) => (
             <div key={id}>
               <span>ID: {id}, </span>

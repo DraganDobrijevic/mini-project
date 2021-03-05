@@ -1,0 +1,12 @@
+.open-layers {
+  text-align: center;
+}
+
+.map {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60vh;
+  width: 100%;
+  border: 1px solid black;
+}

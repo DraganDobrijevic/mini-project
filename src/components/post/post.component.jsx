@@ -11,7 +11,6 @@ const Post = ({
   contactEmail,
   deletePost,
   updatePost,
-  posts,
 }) => {
   const [updatePostData, setUpdatePostData] = useState({
     author: '',
@@ -41,9 +40,6 @@ const Post = ({
     console.log(id);
     console.log(updatePostData);
 
-    // console.log(posts);
-    // deletePost(id);
-
     updatePost(id, updatePostData);
 
     setUpdatePostData({
@@ -56,11 +52,14 @@ const Post = ({
     setShow(false);
   };
 
-  const showUpdateForm = () => {
+  const showUpdateForm = (e) => {
     console.log('show/hide');
+    console.log(e.target);
     if (show) {
+      e.target.innerHTML = 'Update Post';
       setShow(false);
     } else {
+      e.target.innerHTML = 'X';
       setShow(true);
     }
   };
@@ -86,7 +85,12 @@ const Post = ({
         <Button variant='outline-danger' size='sm' onClick={handleDeletePost}>
           Delete Post
         </Button>
-        <Button variant='outline-info' size='sm' onClick={showUpdateForm}>
+        <Button
+          type='button'
+          variant='outline-info'
+          size='sm'
+          onClick={showUpdateForm}
+        >
           Update Post
         </Button>
       </div>

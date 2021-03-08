@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='top-nav-bar'>
-        <Link className='logo-container' to='/'>
+        <Link className='logo-container' to='/zadatak1'>
           <Logo className='logo' alt='logo' />
           <span className='logo-text'>Mini Project - Planet Soft</span>
         </Link>

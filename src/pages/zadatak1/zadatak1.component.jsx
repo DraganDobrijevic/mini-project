@@ -14,7 +14,7 @@ const Zadatak1 = () => {
   }, []);
 
   useEffect(() => {
-    console.log('snima');
+    console.log('save new posts');
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(posts));
   }, [posts]);
 
@@ -32,29 +32,33 @@ const Zadatak1 = () => {
   };
 
   const updatePost = (id, newData) => {
-    console.log('updateeeeeeeeeeeee');
-    console.log(id);
-    // const object = posts.find((x) => x.id === id);
-    const object = posts.filter((post) => post.id === id);
-    console.log(object);
-    const index = posts.indexOf(object[0]);
-    console.log(index);
-    console.log(newData);
+    console.log('function: updatePost');
+    console.log('ID: ', id);
 
-    const newUpdate = {
+    const post = posts.find((x) => x.id === id);
+    console.log(`Finded post object: ${JSON.stringify(post)}`);
+    const index = posts.indexOf(post);
+
+    // const post = posts.filter((post) => post.id === id);
+    // console.log(`Finded array with one post: ${post}`);
+    // const index = posts.indexOf(post[0]);
+
+    console.log(`Index: ${index}`);
+
+    const updatedPost = {
       id,
       ...newData,
     };
-    console.log(newUpdate);
+    console.log(updatedPost);
 
-    const updatedObject = [
+    const updatedPosts = [
       ...posts.slice(0, index),
-      newUpdate,
+      updatedPost,
       ...posts.slice(index + 1),
     ];
 
-    console.log(updatedObject);
-    setPosts(updatedObject);
+    console.log('Updated posts: ', updatedPosts);
+    setPosts(updatedPosts);
   };
 
   return (

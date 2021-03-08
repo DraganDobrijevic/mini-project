@@ -1,17 +1,28 @@
 import { useState } from 'react';
 
-export const useCustomHook = (data) => {
-  const [sortByData, setSortByData] = useState([]);
+const useCustomHook = (data) => {
   const [searchData, setSearchData] = useState([]);
+  const [sortByData, setSortByData] = useState([]);
 
-  const search = (key) => {
-    const find = data.filter(
-      (x) => x.first_name.toLowerCase() === key.toLowerCase()
-    );
-    // console.log(find);
-    setSearchData([...find]);
+  const search = (value, type) => {
+    if (type === 'first_name') {
+      const find = data.filter(
+        (x) => x.first_name.toLowerCase() === value.toLowerCase()
+      );
+      setSearchData([...find]);
+    } else if (type === 'last_name') {
+      const find = data.filter(
+        (x) => x.last_name.toLowerCase() === value.toLowerCase()
+      );
+      setSearchData([...find]);
+    } else {
+      const find = data.filter((x) => x.id === Number(value));
+      setSearchData([...find]);
+    }
   };
-  // console.log(`Search data: ${ searchData }`);
+
+  // console.log(`Search data: ${JSON.stringify(searchData)}`);
+  // console.log(`Sorted data: ${JSON.stringify(sortByData)}`);
 
   const sortBy = (type) => {
     const types = {
@@ -40,3 +51,5 @@ export const useCustomHook = (data) => {
 
   return { sortBy, search, searchData, sortByData };
 };
+
+export default useCustomHook;

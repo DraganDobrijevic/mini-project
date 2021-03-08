@@ -6,6 +6,7 @@
 }
 
 .search-input {
+  margin-left: 0.5rem;
   padding: 2px;
   text-align: center;
 }
@@ -36,13 +37,20 @@
   border: 1px solid rgba(37, 37, 61, 0.438);
 }
 
+.search-box-right {
+  display: flex;
+}
+
+.form-control {
+  width: max-content;
+}
+
 .search-box h5 {
   margin-top: 0.5rem;
   margin-right: 0.5rem;
 }
 
-.select-sort h5,
-label {
+.select-sort h5 {
   margin-top: 0.5rem;
   margin-right: 0.5rem;
 }

@@ -15,7 +15,7 @@ const AllPosts = ({ posts, deletePost, updatePost }) => {
 
   return (
     <div className='allPosts'>
-      {show ? <h4>Posts:</h4> : <h4>List is empty</h4>}
+      {show ? <h4>Posts:</h4> : <h4>No created posts.</h4>}
       {posts.map(({ id, ...otherPostProps }) => (
         <Post
           key={id}

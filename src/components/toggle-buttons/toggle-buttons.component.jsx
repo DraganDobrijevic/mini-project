@@ -4,14 +4,14 @@ import { useState } from 'react';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-const ToggleButtons = () => {
-  const [checked, setChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState('1');
+const ToggleButtons = ({ handleChange }) => {
+  const [radioValue, setRadioValue] = useState('None');
 
   const radios = [
-    { name: 'Active', value: '1' },
-    { name: 'Radio', value: '2' },
-    { name: 'Radio', value: '3' },
+    { name: 'None', value: 'None' },
+    { name: 'Point', value: 'Point' },
+    { name: 'Line', value: 'LineString' },
+    { name: 'Polygon', value: 'Polygon' },
   ];
 
   return (
@@ -25,7 +25,11 @@ const ToggleButtons = () => {
             name='radio'
             value={radio.value}
             checked={radioValue === radio.value}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            onChange={(e) => {
+              console.log('e.targ.val unutar onChange', e.target.value);
+              handleChange(e);
+              setRadioValue(e.target.value);
+            }}
           >
             {radio.name}
           </ToggleButton>

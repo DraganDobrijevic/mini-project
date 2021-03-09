@@ -86,3 +86,19 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1050px) {
+  .top-nav-bar {
+    height: 60%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .options {
+    width: 100%;
+  }
+
+  .option {
+    padding: 5px 20px;
+  }
+}

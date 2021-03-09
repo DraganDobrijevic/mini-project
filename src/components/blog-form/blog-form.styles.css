@@ -6,3 +6,10 @@
   width: 40%;
   padding: 20px 10px;
 }
+
+@media (max-width: 1200px) {
+  .blog-form {
+    width: 100%;
+    padding: 20px 40px;
+  }
+}

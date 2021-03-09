@@ -14,9 +14,13 @@ import ToggleButtons from '../../components/toggle-buttons/toggle-buttons.compon
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
+import { toLonLat } from 'ol/proj';
+import { toStringHDMS } from 'ol/coordinate';
+
 const Zadatak3 = () => {
   const [selectedValue, setSelectedValue] = useState('None');
   const [showModal, setShowModal] = useState(false);
+  const [hdms, setHdms] = useState(null);
   const [map, setMap] = useState(null);
   const mapRef = useRef();
 
@@ -82,6 +86,10 @@ const Zadatak3 = () => {
           console.log('point');
           console.log(showModal);
           setShowModal(true);
+
+          let coordinate = e.target.sketchCoords_;
+          let hdms = toStringHDMS(toLonLat(coordinate));
+          setHdms(hdms);
         }
       });
     }
@@ -114,17 +122,12 @@ const Zadatak3 = () => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Coordinates</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Press escape key to close.
-        </Modal.Body>
+        <Modal.Body>{hdms}</Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Close
-          </Button>
           <Button variant='primary' onClick={handleClose}>
-            Understood
+            OK
           </Button>
         </Modal.Footer>
       </Modal>

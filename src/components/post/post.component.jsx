@@ -36,9 +36,9 @@ const Post = ({
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    console.log('update');
-    console.log(id);
-    console.log(updatePostData);
+    // console.log('update');
+    // console.log(id);
+    // console.log(updatePostData);
 
     updatePost(id, updatePostData);
 
@@ -53,8 +53,8 @@ const Post = ({
   };
 
   const showUpdateForm = (e) => {
-    console.log('show/hide');
-    console.log(e.target);
+    // console.log('show/hide');
+    // console.log(e.target);
     if (show) {
       e.target.innerHTML = 'Update Post';
       setShow(false);

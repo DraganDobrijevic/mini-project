@@ -34,7 +34,7 @@ const BlogForm = ({ addNewPost }) => {
     }
 
     try {
-      console.log(postInfo);
+      // console.log(postInfo);
 
       addNewPost(postInfo);
 

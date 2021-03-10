@@ -77,7 +77,8 @@ const Post = ({
       <p className='post-text'>{blogPost}</p>
       <div className='post-info'>
         <span>
-          Posted by {author}, {contactEmail}
+          Posted by {author}
+          {contactEmail && `, ${contactEmail}`}
         </span>
         <hr />
       </div>

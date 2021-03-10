@@ -3,6 +3,20 @@
   padding: 30px;
   background-color: aliceblue;
   border-radius: 20px;
+  animation: post-animate 1s ease-in-out;
+}
+
+@keyframes post-animate {
+  0% {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .post-title {

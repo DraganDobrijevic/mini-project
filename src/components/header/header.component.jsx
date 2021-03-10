@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 import './header.styles.css';
@@ -7,21 +7,33 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='top-nav-bar'>
-        <Link className='logo-container' to='/zadatak1'>
+        <NavLink className='logo-container' to='/zadatak1'>
           <Logo className='logo' alt='logo' />
-          <span className='logo-text'>Mini Project - Planet Soft</span>
-        </Link>
-        <div className='options'>
-          <Link className='option' to='/zadatak1'>
+          <span className='logo-text'>Mini Project</span>
+        </NavLink>
+        <nav className='options'>
+          <NavLink
+            className='option'
+            activeClassName='option--active'
+            to='/zadatak1'
+          >
             Zadatak 1
-          </Link>
-          <Link className='option' to='/zadatak2'>
+          </NavLink>
+          <NavLink
+            className='option'
+            activeClassName='option--active'
+            to='/zadatak2'
+          >
             Zadatak 2
-          </Link>
-          <Link className='option' to='/zadatak3'>
+          </NavLink>
+          <NavLink
+            className='option'
+            activeClassName='option--active'
+            to='/zadatak3'
+          >
             Zadatak 3
-          </Link>
-        </div>
+          </NavLink>
+        </nav>
       </div>
     </div>
   );

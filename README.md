@@ -1,4 +1,4 @@
-# Planet Soft Project
+# Mini Project
 
 Napraviti mini projekat koji se sastoji iz tri dela.
 

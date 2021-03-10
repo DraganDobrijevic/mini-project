@@ -14,7 +14,6 @@ const Zadatak1 = () => {
   }, []);
 
   useEffect(() => {
-    console.log('save new posts');
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(posts));
   }, [posts]);
 
@@ -32,24 +31,22 @@ const Zadatak1 = () => {
   };
 
   const updatePost = (id, newData) => {
-    console.log('function: updatePost');
-    console.log('ID: ', id);
+    // console.log('function: updatePost');
 
     const post = posts.find((x) => x.id === id);
-    console.log(`Finded post object: ${JSON.stringify(post)}`);
+    // console.log(`Finded post object: ${JSON.stringify(post)}`);
     const index = posts.indexOf(post);
 
     // const post = posts.filter((post) => post.id === id);
     // console.log(`Finded array with one post: ${post}`);
     // const index = posts.indexOf(post[0]);
 
-    console.log(`Index: ${index}`);
+    // console.log(`Index: ${index}`);
 
     const updatedPost = {
       id,
       ...newData,
     };
-    console.log(updatedPost);
 
     const updatedPosts = [
       ...posts.slice(0, index),
@@ -57,7 +54,7 @@ const Zadatak1 = () => {
       ...posts.slice(index + 1),
     ];
 
-    console.log('Updated posts: ', updatedPosts);
+    // console.log('Updated posts: ', updatedPosts);
     setPosts(updatedPosts);
   };
 

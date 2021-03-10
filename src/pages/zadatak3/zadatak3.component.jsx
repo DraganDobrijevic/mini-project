@@ -68,11 +68,13 @@ const Zadatak3 = () => {
     const drawLayer = new VectorLayer({
       source: drawSource,
     });
+
     if (map) {
       map.addLayer(drawLayer);
     }
-    console.log('sporni effect');
+
     if (selectedValue !== 'None') {
+      // eslint-disable-next-line
       draw = new Draw({
         source: drawSource,
         type: selectedValue,
@@ -80,11 +82,8 @@ const Zadatak3 = () => {
       map.addInteraction(draw);
 
       draw.on('drawend', (e) => {
-        console.log('drawend');
-        console.log('End selected value: ', selectedValue);
         if (selectedValue === 'Point') {
-          console.log('point');
-          console.log(showModal);
+          // console.log('point');
           setShowModal(true);
 
           let coordinate = e.target.sketchCoords_;
@@ -103,7 +102,6 @@ const Zadatak3 = () => {
 
   const changeDrawType = (e) => {
     map.removeInteraction(draw);
-    console.log('e.targ.val unutar changeDrawType', e.target.value);
     const x = e.target.value;
     setSelectedValue(x);
   };
@@ -111,10 +109,10 @@ const Zadatak3 = () => {
   const handleClose = () => setShowModal(false);
 
   return (
-    <div className='open-layers'>
+    <div className='task3'>
       <h2>OpenLayers</h2>
-      <div ref={mapRef} className='map'></div>
       <ToggleButtons handleChange={changeDrawType} />
+      <div ref={mapRef} className='map'></div>
       <Modal
         show={showModal}
         onHide={handleClose}

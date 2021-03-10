@@ -1,3 +1,7 @@
+.task1 h2 {
+  margin-top: 50px;
+}
+
 .blog {
   display: flex;
   justify-content: space-evenly;

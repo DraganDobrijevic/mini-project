@@ -37,7 +37,7 @@ const Zadatak2 = () => {
   };
 
   return (
-    <div className='custom-hook'>
+    <div className='task2'>
       <h2>Custom Hook</h2>
       <div className='search'>
         <div className='search-box'>

@@ -1,18 +1,12 @@
 .header {
-  height: 100px;
   width: 100%;
 }
 
 .top-nav-bar {
-  height: 60%;
-  width: 100%;
-  top: 0;
-  position: sticky;
   display: flex;
   justify-content: space-between;
   background: #071849;
   padding: 0 2%;
-  z-index: 10;
 }
 
 .logo-container {
@@ -58,6 +52,12 @@
   font-weight: bold;
 }
 
+.option--active {
+  background-color: #063564;
+  color: #fff;
+  text-decoration: none;
+}
+
 .option-text {
   margin-left: 0.4rem;
 }
@@ -72,6 +72,27 @@
   border-left: 2px solid #fff;
 }
 
+@media (max-width: 1050px) {
+  .top-nav-bar {
+    height: 60%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .logo-container {
+    justify-content: center;
+  }
+
+  .options {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .option {
+    padding: 5px 20px;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .logo {
     animation: App-logo-spin infinite 20s linear;
@@ -84,21 +105,5 @@
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@media (max-width: 1050px) {
-  .top-nav-bar {
-    height: 60%;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .options {
-    width: 100%;
-  }
-
-  .option {
-    padding: 5px 20px;
   }
 }

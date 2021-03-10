@@ -26,7 +26,6 @@ const ToggleButtons = ({ handleChange }) => {
             value={radio.value}
             checked={radioValue === radio.value}
             onChange={(e) => {
-              console.log('e.targ.val unutar onChange', e.target.value);
               handleChange(e);
               setRadioValue(e.target.value);
             }}

@@ -1,16 +1,14 @@
-.open-layers {
+.task3 {
+  width: 100%;
   text-align: center;
 }
 
-.map {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 60vh;
-  width: 100%;
-  border: 1px solid black;
+.task3 h2 {
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
-.radio-form {
-  z-index: 10;
+.map {
+  height: 70vh;
+  width: 100%;
 }

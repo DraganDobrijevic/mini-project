@@ -9,7 +9,7 @@ const Header = () => {
       <div className='top-nav-bar'>
         <NavLink className='logo-container' to='/zadatak1'>
           <Logo className='logo' alt='logo' />
-          <span className='logo-text'>Mini Project</span>
+          <span className='logo-text'>Mini Project - Planet</span>
         </NavLink>
         <nav className='options'>
           <NavLink

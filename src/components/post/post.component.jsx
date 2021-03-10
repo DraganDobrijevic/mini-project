@@ -29,8 +29,8 @@ const Post = ({
   const [show, setShow] = useState(false);
 
   const handleDeletePost = () => {
-    console.log('delete');
-    console.log(id);
+    // console.log('delete');
+    // console.log(id);
     deletePost(id);
   };
 
